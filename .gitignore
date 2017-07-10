@@ -286,3 +286,6 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
+/Shopping.Core/Shopping.Core/Assets
+/Shopping.Core/Shopping.Core/WebAPI
+/Shopping.Core/Shopping.Core/Content/ej/web
