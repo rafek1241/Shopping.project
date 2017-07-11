@@ -26,6 +26,7 @@ namespace Shopping.Core
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/ej.theme.css",
                       "~/Content/site.css"));
+            bundles.Add(new StyleBundle("~/Content/shop").IncludeDirectory("~/Content/Shop", "*.css",false));
 
             bundles.Add(new ScriptBundle("~/bundles/ejscripts").Include(
                            "~/Scripts/jsrender.min.js",
@@ -38,7 +39,10 @@ namespace Shopping.Core
 
 
             // ShopPage
-            bundles.Add(new ScriptBundle("~/bundles/shop").IncludeDirectory("~/Areas/ShopPage/Scripts","*.js",true));
+            bundles.Add(new ScriptBundle("~/bundles/shop").Include("~/Areas/ShopPage/Scripts/Site.js")
+                .IncludeDirectory("~/Areas/ShopPage/Scripts/Controllers", "*.js", true)
+                .IncludeDirectory("~/Areas/ShopPage/Scripts/Directives", "*.js", true)
+                .IncludeDirectory("~/Areas/ShopPage/Scripts/Services", "*.js", true));
         }
     }
 }

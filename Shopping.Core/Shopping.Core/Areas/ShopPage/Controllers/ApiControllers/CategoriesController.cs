@@ -1,0 +1,22 @@
+﻿using Shopping.Core.Areas.ShopPage.Controllers.BaseControllers;
+using Shopping.Core.Areas.ShopPage.Controllers.Logic;
+using Shopping.Core.Models.HelperModels;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Http;
+
+namespace Shopping.Core.Areas.ShopPage.Controllers.ApiControllers
+{
+    //TODO
+    public class CategoriesController : ApiLogicBaseController<CategoriesLogic>
+    {
+
+        [HttpPost]
+        public ResponseModel GetCategories()
+        {
+            return Logic.GetCategories();
+        } 
+    }
+}

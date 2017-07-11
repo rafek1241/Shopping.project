@@ -17,7 +17,7 @@ namespace Shopping.Core.Areas.ShopPage
             context.MapRoute(
                 "ShopPage_default",
                 "ShopPage/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                new {controller="Index", action = "Index", id = UrlParameter.Optional }
             );
         }
     }
