@@ -1,15 +1,11 @@
 ﻿<div class="container">
     <div class="row">
         <div class="col-lg-2">
-            <div>
-                <div id="treeView" ej-treeview
-                     e-fields-datasource="CategoryService.data"
-                     e-fields-id="id"
-                     e-fields-parentid="pid"
-                     e-fields-text="name"
-                     e-fields-haschild="hasChild"
-                     e-fields-expanded="expanded" />
-            </div>
+                <div id="treeView" 
+                     e-deepwatch="true"
+                     ej-treeview
+                     e-fields="vm.CategoryService.categoriesWidget"
+                    ng-if="vm.CategoryService.showCategories" />
         </div>
         <div class="col-lg-10">
             

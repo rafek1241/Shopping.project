@@ -6,6 +6,9 @@ using System.Web;
 using Shopping.Core.Models;
 using Shopping.Core.Models.HelperModels;
 using System.Data.Entity;
+using System.Collections;
+using Syncfusion.JavaScript.Shared.Serializer;
+using System.Web.Script.Serialization;
 
 namespace Shopping.Core.Areas.ShopPage.Controllers.Logic
 {
@@ -20,7 +23,7 @@ namespace Shopping.Core.Areas.ShopPage.Controllers.Logic
             var response = new ResponseModel();
             try
             {
-                response.Data = Db.Categories.AsQueryable();
+                response.Data = Database.Categories.ToList();
             }
             catch (Exception error)
             {
