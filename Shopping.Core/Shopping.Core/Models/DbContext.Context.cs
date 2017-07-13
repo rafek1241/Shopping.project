@@ -13,9 +13,9 @@ namespace Shopping.Core.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ShopEntites : DbContext
+    public partial class ShopEntities : DbContext
     {
-        public ShopEntites()
+        public ShopEntities()
             : base("name=ShopEntites")
         {
         }

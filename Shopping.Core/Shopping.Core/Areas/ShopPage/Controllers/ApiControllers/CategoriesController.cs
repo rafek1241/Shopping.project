@@ -9,7 +9,6 @@ using System.Web.Http;
 
 namespace Shopping.Core.Areas.ShopPage.Controllers.ApiControllers
 {
-    //TODO
     public class CategoriesController : ApiLogicBaseController<CategoriesLogic>
     {
 

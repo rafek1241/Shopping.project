@@ -14,7 +14,7 @@ namespace Shopping.Core.Areas.ShopPage.Controllers.Logic
 {
     public class CategoriesLogic : LogicBase
     {
-        public CategoriesLogic(ShopEntites db) : base(db)
+        public CategoriesLogic(ShopEntities db) : base(db)
         {
         }
 

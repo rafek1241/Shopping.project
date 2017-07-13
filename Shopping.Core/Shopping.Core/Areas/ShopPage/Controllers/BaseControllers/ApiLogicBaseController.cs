@@ -12,22 +12,10 @@ namespace Shopping.Core.Areas.ShopPage.Controllers.BaseControllers
     public class ApiLogicBaseController<T> : ApiController where T : LogicBase
     {
         public T Logic { get; }
-
         public ApiLogicBaseController()
         {
-            Logic = (T)Activator.CreateInstance(typeof(T), GetDbContext());
+            Logic = (T)Activator.CreateInstance(typeof(T), (ShopEntities)null);
         }
-
-        private ShopEntites GetDbContext()
-        {
-            //using (var ctx = new ShopEntites())
-            //{
-            //    return ctx;
-            //}
-            return new ShopEntites();
-        }
-
-
-
     }
+
 }
