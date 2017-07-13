@@ -16,7 +16,7 @@ namespace Shopping.Core.Models
     public partial class ShopEntities : DbContext
     {
         public ShopEntities()
-            : base("name=ShopEntites")
+            : base("name=ShopEntities")
         {
         }
     
@@ -26,5 +26,7 @@ namespace Shopping.Core.Models
         }
     
         public virtual DbSet<Categories> Categories { get; set; }
+        public virtual DbSet<Products> Products { get; set; }
+        public virtual DbSet<Specification> Specification { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Shopping.Core.Areas.ShopPage.Controllers.BaseControllers;
+﻿using Shopping.Core.Areas.ShopPage.Models.Mappers.CategoriesRequests;
+using Shopping.Core.Areas.ShopPage.Controllers.BaseControllers;
 using Shopping.Core.Areas.ShopPage.Controllers.Logic;
 using Shopping.Core.Models.HelperModels;
 using System;
@@ -17,5 +18,10 @@ namespace Shopping.Core.Areas.ShopPage.Controllers.ApiControllers
         {
             return Logic.GetCategories();
         } 
+        [HttpPost]
+        public ResponseModel GetCategorySpecification(IdRequest model)
+        {
+            return Logic.GetCategorySpecification(model.Id);
+        }
     }
 }

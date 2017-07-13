@@ -14,10 +14,22 @@ namespace Shopping.Core.Models
     
     public partial class Categories
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Categories()
+        {
+            this.Products = new HashSet<Products>();
+            this.Specification = new HashSet<Specification>();
+        }
+    
         public long Id { get; set; }
         public Nullable<long> Pid { get; set; }
         public string Name { get; set; }
         public bool HasChild { get; set; }
         public Nullable<bool> Expanded { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Products> Products { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Specification> Specification { get; set; }
     }
 }

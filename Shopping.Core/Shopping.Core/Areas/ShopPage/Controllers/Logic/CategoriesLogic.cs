@@ -27,12 +27,26 @@ namespace Shopping.Core.Areas.ShopPage.Controllers.Logic
             }
             catch (Exception error)
             {
-                response.Errors = error.Message;
-                response.Success = false;
-                return response;
+                return response.SetErrors(error);
             }
             response.Success = true;
             return response;
+        }
+
+        public ResponseModel GetCategorySpecification(long idOfCategory)
+        {
+            var response = new ResponseModel();
+            try
+            {
+                response.Data = Database.Specification.Where(x => x.CategoryId == idOfCategory).ToList();
+            }
+            catch (Exception error)
+            {
+                return response.SetErrors(error);
+            }
+            response.Success = true;
+            return response;
+
         }
 
     }
