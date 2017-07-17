@@ -9,15 +9,9 @@ using System.Threading.Tasks;
 
 namespace Shopping.Core.Areas.ShopPage.Controllers.BaseControllers
 {
-    //Maybe change for static class - to prevent creating Entity objects - use only one instead.
     public class LogicBase : IDisposable
     {
-        protected static ShopEntities Database;
-
-        public LogicBase()
-        {
-            InitializeDatabase((ShopEntities)null);
-        }
+        protected ShopEntities Database;
 
         public LogicBase(ShopEntities db)
         {

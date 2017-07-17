@@ -1,18 +1,27 @@
 ﻿<div class="container">
     <div class="row">
         <div class="col-lg-2">
-                <div id="treeView" 
-                     e-deepwatch="true"
-                     ej-treeview
-                     e-fields="vm.CategoryService.categoriesWidget"
-                    ng-if="vm.CategoryService.showCategories" />
+            <div id="treeView"
+                 e-deepwatch="true"
+                 ej-treeview
+                 e-fields="vm.CategoryService.categoriesWidget"
+                 ng-if="vm.CategoryService.showCategories" />
         </div>
         <div class="col-lg-10">
-            
+
             <!-- Top products -->
-
             <!-- Categories big-menu -->
-
+            <div id="products-container" class="container">
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-4" ng-repeat="product in vm.ProductService.products">
+                            <div class="row">{{product.name}}</div>
+                            <div class="row">{{product.description}}</div>
+                            <div class="row">{{product.price}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -14,8 +14,10 @@ namespace Shopping.Core.Areas.ShopPage.Controllers.BaseControllers
         public T Logic { get; }
         public ApiLogicBaseController()
         {
-            Logic = (T)Activator.CreateInstance(typeof(T), (ShopEntities)null);
+            Database = Database ?? new ShopEntities();
+            Logic = (T)Activator.CreateInstance(typeof(T), Database);
         }
+        public ShopEntities Database { get; set; }
     }
 
 }

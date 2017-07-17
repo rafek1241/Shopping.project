@@ -2,9 +2,11 @@
     'use strict';
     angular.module('app')
         .controller("HomeController", HomeController);
-    HomeController.$inject = ['CategoryService'];
-    function HomeController(CategoryService) {
+    HomeController.$inject = ['CategoryService','ProductService'];
+    function HomeController(CategoryService, ProductService) {
         var vm = this;
         vm.CategoryService = CategoryService;
+        vm.ProductService = ProductService;
+
     }
 })();

@@ -13,11 +13,11 @@
                 // :variable to pass in path, ex. "/students/:studentId"
                 templateUrl: 'Areas/ShopPage/Partials/home.html',
                 controller: 'HomeController',
-                controllerAs: "vm",
+                controllerAs: "vm"
             })
             //....
             .otherwise({
-                redirectTo: '/',
+                redirectTo: '/'
             });
         $locationProvider.html5Mode(true);
         $locationProvider.hashPrefix('!');
