@@ -10,6 +10,8 @@
         <EntityTypeShape EntityType="ShopModels.Specification" Width="1.5" PointX="3" PointY="4.5" />
         <AssociationConnector Association="ShopModels.FK_Products_Categories" />
         <AssociationConnector Association="ShopModels.FK_Specification_Categories" />
+        <EntityTypeShape EntityType="ShopModels.Product_Gallery" Width="1.5" PointX="5.25" PointY="7.375" />
+        <AssociationConnector Association="ShopModels.FK_Product_Gallery_To_Products" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

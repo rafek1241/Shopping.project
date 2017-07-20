@@ -15,6 +15,14 @@
           <Property Name="HasChild" Type="bit" Nullable="false" />
           <Property Name="Expanded" Type="bit" />
         </EntityType>
+        <EntityType Name="Product_Gallery">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="Url" Type="varchar" MaxLength="1000" />
+          <Property Name="ProductId" Type="bigint" />
+        </EntityType>
         <EntityType Name="Products">
           <Key>
             <PropertyRef Name="Id" />
@@ -34,6 +42,18 @@
           <Property Name="Name" Type="varchar" MaxLength="150" />
           <Property Name="CategoryId" Type="bigint" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Product_Gallery_To_Products">
+          <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
+          <End Role="Product_Gallery" Type="Self.Product_Gallery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product_Gallery">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Products_Categories">
           <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
           <End Role="Products" Type="Self.Products" Multiplicity="*" />
@@ -60,8 +80,13 @@
         </Association>
         <EntityContainer Name="ShopModelsStoreContainer">
           <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product_Gallery" EntityType="Self.Product_Gallery" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Specification" EntityType="Self.Specification" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Product_Gallery_To_Products" Association="Self.FK_Product_Gallery_To_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="Product_Gallery" EntitySet="Product_Gallery" />
+          </AssociationSet>
           <AssociationSet Name="FK_Products_Categories" Association="Self.FK_Products_Categories">
             <End Role="Categories" EntitySet="Categories" />
             <End Role="Products" EntitySet="Products" />
@@ -99,6 +124,11 @@
             <End Role="Categories" EntitySet="Categories" />
             <End Role="Specification" EntitySet="Specification" />
           </AssociationSet>
+          <EntitySet Name="Product_Gallery" EntityType="ShopModels.Product_Gallery" />
+          <AssociationSet Name="FK_Product_Gallery_To_Products" Association="ShopModels.FK_Product_Gallery_To_Products">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="Product_Gallery" EntitySet="Product_Gallery" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Products">
           <Key>
@@ -111,6 +141,7 @@
           <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="Available" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Categories" Relationship="ShopModels.FK_Products_Categories" FromRole="Products" ToRole="Categories" />
+          <NavigationProperty Name="Product_Gallery" Relationship="ShopModels.FK_Product_Gallery_To_Products" FromRole="Products" ToRole="Product_Gallery" />
         </EntityType>
         <EntityType Name="Specification">
           <Key>
@@ -142,6 +173,27 @@
             </Principal>
             <Dependent Role="Specification">
               <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Product_Gallery">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="Url" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="ProductId" Type="Int64" />
+          <NavigationProperty Name="Products" Relationship="ShopModels.FK_Product_Gallery_To_Products" FromRole="Product_Gallery" ToRole="Products" />
+        </EntityType>
+        <Association Name="FK_Product_Gallery_To_Products">
+          <End Type="ShopModels.Products" Role="Products" Multiplicity="0..1" />
+          <End Type="ShopModels.Product_Gallery" Role="Product_Gallery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product_Gallery">
+              <PropertyRef Name="ProductId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -179,6 +231,15 @@
               <MappingFragment StoreEntitySet="Specification">
                 <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product_Gallery">
+            <EntityTypeMapping TypeName="ShopModels.Product_Gallery">
+              <MappingFragment StoreEntitySet="Product_Gallery">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

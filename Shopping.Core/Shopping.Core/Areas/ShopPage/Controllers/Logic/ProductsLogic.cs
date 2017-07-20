@@ -1,11 +1,10 @@
 ﻿using Shopping.Core.Areas.ShopPage.Controllers.BaseControllers;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using Shopping.Core.Models.HelperModels;
-using Shopping.Core.Areas.ShopPage.Models.Mappers.ProductsRequests;
 using Shopping.Core.Models;
+using System.Web;
+using System.Collections.Generic;
 
 namespace Shopping.Core.Areas.ShopPage.Controllers.Logic
 {
@@ -20,7 +19,21 @@ namespace Shopping.Core.Areas.ShopPage.Controllers.Logic
 
             try
             {
-                response.Data = Database.Products.ToList();
+                var results = new List<object>();
+                foreach (var item in Database.Products)
+                {
+                    var list = new List<Product_Gallery>();
+                    foreach (var item2 in item.Product_Gallery)
+                    {
+                        item2.Url = VirtualPathUtility.ToAbsolute("~/") + item2.Url;
+                        list.Add(item2);
+                    }
+                    item.Product_Gallery = list;
+                    results.Add(item);
+                    
+                }
+                response.Data = results;
+
                 response.Success = true;
             }
             catch (Exception err)

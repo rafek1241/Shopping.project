@@ -14,6 +14,12 @@ namespace Shopping.Core.Models
     
     public partial class Products
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Products()
+        {
+            this.Product_Gallery = new HashSet<Product_Gallery>();
+        }
+    
         public long Id { get; set; }
         public long CategoryId { get; set; }
         public string Name { get; set; }
@@ -22,5 +28,7 @@ namespace Shopping.Core.Models
         public bool Available { get; set; }
     
         public virtual Categories Categories { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Product_Gallery> Product_Gallery { get; set; }
     }
 }

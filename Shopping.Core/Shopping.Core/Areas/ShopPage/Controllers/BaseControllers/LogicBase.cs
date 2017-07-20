@@ -15,20 +15,12 @@ namespace Shopping.Core.Areas.ShopPage.Controllers.BaseControllers
 
         public LogicBase(ShopEntities db)
         {
-            InitializeDatabase(db);
+            Database = db;
         }
-
-        private void InitializeDatabase(ShopEntities db)
+        public LogicBase()
         {
-            if (Database != null)
-                return;
-
-            if (db == null)
-                Database = new ShopEntities();
-            else
-                Database = db;
+            Database = new ShopEntities();
         }
-
         #region IDisposable Support
         private bool disposedValue = false; // Aby wykryć nadmiarowe wywołania
 

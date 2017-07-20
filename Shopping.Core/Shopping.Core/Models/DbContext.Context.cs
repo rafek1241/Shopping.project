@@ -28,5 +28,6 @@ namespace Shopping.Core.Models
         public virtual DbSet<Categories> Categories { get; set; }
         public virtual DbSet<Products> Products { get; set; }
         public virtual DbSet<Specification> Specification { get; set; }
+        public virtual DbSet<Product_Gallery> Product_Gallery { get; set; }
     }
 }
