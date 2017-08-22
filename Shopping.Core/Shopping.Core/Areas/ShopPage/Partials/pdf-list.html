@@ -1,0 +1,14 @@
+﻿<div class="container-fluid">
+    <div class="col-xs-2">
+        <div ej-listview id="anglistview" e-datasource="vm.PdflistService.listOfPdfs.data"
+             e-fieldsettings="vm.PdflistService.listOfPdfs.fields"
+             e-selecteditemindex="vm.PdflistService.currentlySelectedPdf"
+             e-persistselection="true" e-allowscrolling="false"
+             e-allow-client-buffering="false"
+             >
+        </div>
+    </div>
+    <div class="col-xs-10">
+        <div id="pdfviewer" style="width: 100%;height:680px" ej-pdfviewer e-serviceurl="{{vm.PdflistService.pdfViewer.serviceUrl}}"></div>
+    </div>
+</div>

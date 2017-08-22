@@ -5,6 +5,7 @@ using Shopping.Core.Models.HelperModels;
 using Shopping.Core.Models;
 using System.Web;
 using System.Collections.Generic;
+using Shopping.Core.Areas.ShopPage.Models.Mappers.ProductsRequests;
 
 namespace Shopping.Core.Areas.ShopPage.Controllers.Logic
 {
@@ -30,7 +31,7 @@ namespace Shopping.Core.Areas.ShopPage.Controllers.Logic
                     }
                     item.Product_Gallery = list;
                     results.Add(item);
-                    
+
                 }
                 response.Data = results;
 
@@ -43,7 +44,35 @@ namespace Shopping.Core.Areas.ShopPage.Controllers.Logic
             return response;
         }
 
-        internal ResponseModel GetProducts(long id)
+        internal ResponseModel GetProductsByCategory(SortRequest model)
+        {
+            var response = new ResponseModel();
+
+            try
+            {
+                response.Data = Database.Products.AsParallel()
+       .Where(x => (model.PriceMin != null) && x.Price >= model.PriceMin)
+       .Where(x => model.PriceMax != null && x.Price <= model.PriceMax)
+       .OrderBy(x => model.Name != null && model.Name == true ? x.Name : null)
+       .OrderByDescending(x => model.Name != null && (model.Name == false) ? x.Name : string.Empty)
+       .OrderBy(x => model.Price != null && model.Price == true ? x.Price : Decimal.MinValue)
+       .OrderByDescending(x => x)
+       .Skip(model.PageOffset)
+       .Take(model.PageSize)
+       .ToList()
+       ;
+                response.Success = true;
+
+            }
+            catch (Exception err)
+            {
+                response.SetErrors(err);
+            }
+            return response;
+
+
+        }
+        internal ResponseModel GetProduct(long id)
         {
 
             var response = new ResponseModel();

@@ -12,6 +12,7 @@ using Shopping.Core.Models;
 using Shopping.Core.Areas.ShopPage.Controllers.BaseControllers;
 using Shopping.Core.Areas.ShopPage.Controllers.Logic;
 using Shopping.Core.Models.HelperModels;
+using Shopping.Core.Areas.ShopPage.Models.Mappers.ProductsRequests;
 
 namespace Shopping.Core.Areas.ShopPage.Controllers.ApiControllers
 {
@@ -26,11 +27,18 @@ namespace Shopping.Core.Areas.ShopPage.Controllers.ApiControllers
             return Logic.GetProducts();
         }
 
-        // GET: api/Products/5
-        public ResponseModel GetProducts(long id)
+        [HttpPost]
+        public ResponseModel GetProduct(IdRequest id)
         {
-            return Logic.GetProducts(id);
+            return Logic.GetProduct(id.Id);
         }
+
+        [HttpPost]
+        public ResponseModel GetProductsByCategory(SortRequest model)
+        {
+            return Logic.GetProductsByCategory(model);
+        }
+
 
         // PUT: api/Products/5
         public ResponseModel PutProducts(long id, Products product)

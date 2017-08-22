@@ -9,13 +9,13 @@ using System.Web.Http;
 
 namespace Shopping.Core.Areas.ShopPage.Controllers.BaseControllers
 {
-    public class ApiLogicBaseController<T> : ApiController where T : LogicBase
+    public class ApiLogicBaseController<CLogic> : ApiController where CLogic : LogicBase
     {
-        public T Logic { get; }
+        public CLogic Logic { get; }
         public ApiLogicBaseController()
         {
             Database = Database ?? new ShopEntities();
-            Logic = (T)Activator.CreateInstance(typeof(T), Database);
+            Logic = (CLogic)Activator.CreateInstance(typeof(CLogic), Database);
         }
         public ShopEntities Database { get; set; }
     }

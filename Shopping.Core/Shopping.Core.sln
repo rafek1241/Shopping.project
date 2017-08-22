@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.14
+VisualStudioVersion = 15.0.26430.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shopping.Core", "Shopping.Core\Shopping.Core.csproj", "{CC7B76EF-3C30-4B99-AD72-2D8EA2C858EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shopping.Core.Tests", "Shopping.Core.Tests\Shopping.Core.Tests.csproj", "{280BC274-7B1F-449F-BAF5-C3577E9E30F8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,8 @@ Global
 		{CC7B76EF-3C30-4B99-AD72-2D8EA2C858EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC7B76EF-3C30-4B99-AD72-2D8EA2C858EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC7B76EF-3C30-4B99-AD72-2D8EA2C858EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{280BC274-7B1F-449F-BAF5-C3577E9E30F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{280BC274-7B1F-449F-BAF5-C3577E9E30F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

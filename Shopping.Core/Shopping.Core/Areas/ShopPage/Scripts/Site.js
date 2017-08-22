@@ -9,15 +9,20 @@
 
     function config($routeProvider, $locationProvider) {
         $routeProvider
-            .when('/ShopPage', {
+            .when('/shop-page', {
                 // :variable to pass in path, ex. "/students/:studentId"
                 templateUrl: 'Areas/ShopPage/Partials/home.html',
                 controller: 'HomeController',
                 controllerAs: "vm"
             })
+            .when('/shop-page/pdfs', {
+                templateUrl: 'Areas/ShopPage/Partials/pdf-list.html',
+                controller: 'PdfChooserController',
+                controllerAs: 'vm'
+            })
             //....
             .otherwise({
-                redirectTo: '/'
+                redirectTo: '/shop-page'
             });
         $locationProvider.html5Mode(true);
         $locationProvider.hashPrefix('!');

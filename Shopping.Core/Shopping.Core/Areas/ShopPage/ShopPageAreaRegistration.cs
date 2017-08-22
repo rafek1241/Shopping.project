@@ -15,9 +15,10 @@ namespace Shopping.Core.Areas.ShopPage
 
         public override void RegisterArea(AreaRegistrationContext context)
         {
+
             context.MapRoute(
                 "ShopPage_default",
-                "ShopPage/{controller}/{action}/{id}",
+                "shop-page/{*whatever}",
                 new { controller = "Index", action = "Index", id = UrlParameter.Optional }
             );
         }
@@ -25,8 +26,8 @@ namespace Shopping.Core.Areas.ShopPage
         public static void Register(HttpRouteCollection routes)
         {
             routes.MapHttpRoute(
-                 name: "Categories",
-                 routeTemplate: "api/categories/{action}/{id}",
+                 name: "ApiControllers",
+                 routeTemplate: "api/{controller}/{action}/{id}",
                  defaults: new { id = RouteParameter.Optional }
              );
         }
