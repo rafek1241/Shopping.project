@@ -38,7 +38,7 @@ namespace Shopping.Core.Areas.ShopPage.Controllers.Logic
             var response = new ResponseModel();
             try
             {
-                response.Data = Database.Specification.Where(x => x.CategoryId == idOfCategory).ToList();
+                response.Data = Database.Specifications.Where(x => x.Category.Id == idOfCategory).ToList();
             }
             catch (Exception error)
             {

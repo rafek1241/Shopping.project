@@ -13,6 +13,7 @@ using Shopping.Core.Areas.ShopPage.Controllers.BaseControllers;
 using Shopping.Core.Areas.ShopPage.Controllers.Logic;
 using Shopping.Core.Models.HelperModels;
 using Shopping.Core.Areas.ShopPage.Models.Mappers.ProductsRequests;
+using Shopping.Core.Models.DbModels;
 
 namespace Shopping.Core.Areas.ShopPage.Controllers.ApiControllers
 {
@@ -41,19 +42,19 @@ namespace Shopping.Core.Areas.ShopPage.Controllers.ApiControllers
 
 
         // PUT: api/Products/5
-        public ResponseModel PutProducts(long id, Products product)
+        public ResponseModel PutProducts(long id, Product product)
         {
             return Logic.UpdateProducts(id, product);
         }
 
         // POST: api/Products
-        public ResponseModel PostProducts(Products product)
+        public ResponseModel PostProducts(Product product)
         {
             return Logic.AddProduct(product);
         }
 
         // DELETE: api/Products/5
-        [ResponseType(typeof(Products))]
+        [ResponseType(typeof(Product))]
         public ResponseModel DeleteProducts(long id)
         {
             return Logic.RemoveProduct(id);

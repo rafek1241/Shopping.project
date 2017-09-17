@@ -6,6 +6,7 @@ using Shopping.Core.Models;
 using System.Web;
 using System.Collections.Generic;
 using Shopping.Core.Areas.ShopPage.Models.Mappers.ProductsRequests;
+using Shopping.Core.Models.DbModels;
 
 namespace Shopping.Core.Areas.ShopPage.Controllers.Logic
 {
@@ -23,13 +24,13 @@ namespace Shopping.Core.Areas.ShopPage.Controllers.Logic
                 var results = new List<object>();
                 foreach (var item in Database.Products)
                 {
-                    var list = new List<Product_Gallery>();
-                    foreach (var item2 in item.Product_Gallery)
+                    var list = new List<ProductImage>();
+                    foreach (var item2 in item.Images)
                     {
                         item2.Url = VirtualPathUtility.ToAbsolute("~/") + item2.Url;
                         list.Add(item2);
                     }
-                    item.Product_Gallery = list;
+                    item.Images = list;
                     results.Add(item);
 
                 }
@@ -89,7 +90,7 @@ namespace Shopping.Core.Areas.ShopPage.Controllers.Logic
             return response;
         }
 
-        internal ResponseModel UpdateProducts(long id, Products product)
+        internal ResponseModel UpdateProducts(long id, Product product)
         {
 
             var response = new ResponseModel();
@@ -114,7 +115,7 @@ namespace Shopping.Core.Areas.ShopPage.Controllers.Logic
             return response;
         }
 
-        internal ResponseModel AddProduct(Products product)
+        internal ResponseModel AddProduct(Product product)
         {
 
             var response = new ResponseModel();

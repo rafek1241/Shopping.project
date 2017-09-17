@@ -13,8 +13,7 @@ namespace Shopping.Core.Areas.ShopPage.Controllers.ApiControllers
         public object GetPdfs(Dictionary<string, string> jsonResult)
         {
             PdfViewerHelper helper = new PdfViewerHelper();
-            string value;
-            jsonResult.TryGetValue("newFileName", out value);
+            jsonResult.TryGetValue("newFileName", out string value);
             string path = System.Web.Hosting.HostingEnvironment.ApplicationPhysicalPath;
             helper.Load(path + "\\Areas\\ShopPage\\Pdfs\\" + (string.IsNullOrEmpty(value) ? "1.pdf" : value));
             object output = helper.ProcessPdf(jsonResult);
